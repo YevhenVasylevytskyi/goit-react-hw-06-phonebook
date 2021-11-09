@@ -1,12 +1,12 @@
-import { ADD, REMOVE, CHANGE, APPLY } from './counter-types';
+import { ADD, DELETE, CHANGE, APPLY } from './counter-types';
 
 export const addContacts = value => ({
   type: ADD,
   payload: value,
 });
 
-export const removeContacts = value => ({
-  type: REMOVE,
+export const deleteContacts = value => ({
+  type: DELETE,
   payload: value,
 });
 

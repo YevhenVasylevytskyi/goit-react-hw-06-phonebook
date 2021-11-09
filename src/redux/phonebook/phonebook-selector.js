@@ -1,6 +1,8 @@
-const ADD = 'contacts/Add';
-const REMOVE = 'contacts/Remove';
-const CHANGE = 'filter/Change';
-const APPLY = 'filter/Apply';
+const actions = {
+  ADD: 'contacts/Add',
+  REMOVE: 'contacts/Remove',
+  CHANGE: 'filter/Change',
+  APPLY: 'filter/Apply',
+};
 
-export { ADD, REMOVE, CHANGE, APPLY };
+export default actions;
