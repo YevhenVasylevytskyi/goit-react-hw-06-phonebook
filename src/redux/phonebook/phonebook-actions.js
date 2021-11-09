@@ -1,21 +1,37 @@
-import { ADD, DELETE, CHANGE, APPLY } from './counter-types';
+import shortid from 'shortid';
+import { createAction } from '@reduxjs/toolkit';
+// import types from './phonebook-types';
 
-export const addContacts = value => ({
-  type: ADD,
-  payload: value,
-});
+// const {ADD, DELETE, CHANGE_FILTER} = types;
 
-export const deleteContacts = value => ({
-  type: DELETE,
-  payload: value,
-});
+// const addContact = ({ name, number }) => ({
+//   type: ADD,
+//   payload: {
+//     id: shortid.generate(),
+//     name: name,
+//     number: number,
+//   },
+// });
 
-export const changeContacts = value => ({
-  type: CHANGE,
-  payload: value,
-});
+// const deleteContact = contactId => ({
+//   type: DELETE,
+//   payload: contactId,
+// });
 
-export const applyContacts = value => ({
-  type: APPLY,
-  payload: value,
-});
+// const changeFilter = value => ({
+//   type: CHANGE_FILTER,
+//   payload: value,
+// });
+
+const addContact = createAction('contacts/Add', ({ name, number }) => ({
+  payload: {
+    name,
+    number,
+    id: shortid.generate(),
+  },
+}));
+const deleteContact = createAction('contacts/Delete');
+const changeFilter = createAction('contacts/ChangeFilter');
+
+const contactsAction = { addContact, deleteContact, changeFilter };
+export default contactsAction;

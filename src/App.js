@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import Container from './components/Container/Container';
 import Section from './components/Section/Section';
 import FormAddContact from './components/FormAddContact/FormAddContact';
@@ -6,53 +6,64 @@ import ContactsList from './components/ContactsList/ContactsList';
 import Filter from './components/Fliter/Filter';
 
 export default function App() {
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(localStorage.getItem('contacts')) ?? [];
-  });
-  const [filter, setFilter] = useState('');
+  // const [contacts, setContacts] = useState(() => {
+  //   return JSON.parse(localStorage.getItem('contacts')) ?? [];
+  // });
+  // const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
-  const addContact = data => {
-    if (contacts.some(contact => contact.name.includes(data.name))) {
-      return alert(`${data.name} is already in contacts!`);
-    }
+  // const addContact = data => {
+  //   if (contacts.some(contact => contact.name.includes(data.name))) {
+  //     return alert(`${data.name} is already in contacts!`);
+  //   }
 
-    setContacts([...contacts, data]);
-  };
+  //   setContacts([...contacts, data]);
+  // };
 
-  const deleteContact = currentId => {
-    setContacts([...contacts.filter(contact => contact.id !== currentId)]);
-  };
+  // const deleteContact = currentId => {
+  //   setContacts([...contacts.filter(contact => contact.id !== currentId)]);
+  // };
 
-  const changeFilter = event => {
-    setFilter(event.currentTarget.value.toLocaleLowerCase());
-  };
+  // const changeFilter = event => {
+  //   setFilter(event.currentTarget.value.toLocaleLowerCase());
+  // };
 
-  const onFilter = () => {
-    return contacts.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(filter),
-    );
-  };
+  // const onFilter = () => {
+  //   return contacts.filter(contact =>
+  //     contact.name.toLocaleLowerCase().includes(filter),
+  //   );
+  // };
 
   return (
     <Container>
       <Section title="Phonebook">
-        <FormAddContact onSubmit={addContact} />
+        <FormAddContact />
       </Section>
 
       <Section title="Contacts">
-        <Filter filter={filter} onChangeFilter={changeFilter} />
-
-        {filter === '' ? (
-          <ContactsList contacts={contacts} deleteContact={deleteContact} />
-        ) : (
-          <ContactsList contacts={onFilter()} deleteContact={deleteContact} />
-        )}
+        <Filter />
+        <ContactsList />
       </Section>
     </Container>
+
+    // <Container>
+    //   <Section title="Phonebook">
+    //     <FormAddContact onSubmit={addContact} />
+    //   </Section>
+
+    //   <Section title="Contacts">
+    //     <Filter filter={filter} onChangeFilter={changeFilter} />
+
+    //     {filter === '' ? (
+    //       <ContactsList contacts={contacts} deleteContact={deleteContact} />
+    //     ) : (
+    //       <ContactsList contacts={onFilter()} deleteContact={deleteContact} />
+    //     )}
+    //   </Section>
+    // </Container>
   );
 }
 
