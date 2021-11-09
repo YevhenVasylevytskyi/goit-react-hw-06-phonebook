@@ -1,11 +1,19 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import {
+  addReducer,
+  removeReducer,
+  changeReducer,
+  applyReducer,
+} from './phonebook/phonebook-reducer';
 
-// Используем редюсер-болванку
-const reducer = (state = {}, action) => {
-  console.log(action);
-  return state;
-};
+const rootReducer = combineReducers({
+  add: addReducer,
+  remove: removeReducer,
+  change: changeReducer,
+  apply: applyReducer,
+});
 
-const store = createStore(reducer);
+const store = createStore(rootReducer, composeWithDevTools());
 
 export default store;
